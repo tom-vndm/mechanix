@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'djangocms_googlemap',
     'djangocms_snippet',
     'djangocms_style',
+    'website.apps.WebsiteConfig',
 ]
 
 MIDDLEWARE = [
