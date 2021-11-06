@@ -8,7 +8,7 @@ from django.utils.translation import gettext_lazy as _
 class MenuItemPlugin(CMSPluginBase):
     model = MenuItem
     name = _("Menu item")
-    render_template = "menu-item.html"
+    render_template = "menuitem.html"
     cache = False
 
     def render(self, context, instance, placeholder):

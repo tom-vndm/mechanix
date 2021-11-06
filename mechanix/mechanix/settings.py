@@ -183,3 +183,16 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
     '/var/www/static/',
 ]
+
+#PicturePlugin FilePlugin GoogleMapPlugin SnippetPlugin LinkPlugin FolderPlugin MastheadPlugin MenuItemPlugin StylePlugin TextPlugin VideoPlayerPlugin
+CMS_PLACEHOLDER_CONF = {
+    'page.html Logo button': {
+        "plugins": ['TextPlugin', 'PicturePlugin'],
+    },
+    'page.html Menu': {
+        "plugins": ['MenuItemPlugin'],
+    },
+    'page.html Masthead': {
+        "plugins": ['MastheadPlugin'],
+    },
+}
