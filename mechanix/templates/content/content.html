@@ -1,0 +1,13 @@
+{% load cms_tags %}
+
+{% for plugin in instance.child_plugin_instances %}
+    {% if forloop.counter|divisibleby:"2" %}
+    <section class="page-section bg-light" id={{ plugin.htmlID }}>    
+    {% else %}
+    <section class="page-section" id={{ plugin.htmlID }}>  
+    {% endif %}
+    <div class="container">
+    {% render_plugin plugin %}
+    </div>
+    </section>
+{% endfor %}

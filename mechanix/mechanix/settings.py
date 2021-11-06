@@ -185,6 +185,7 @@ STATICFILES_DIRS = [
 ]
 
 #PicturePlugin FilePlugin GoogleMapPlugin SnippetPlugin LinkPlugin FolderPlugin MastheadPlugin MenuItemPlugin StylePlugin TextPlugin VideoPlayerPlugin
+#ContentPlugin
 CMS_PLACEHOLDER_CONF = {
     'page.html Logo button': {
         "plugins": ['TextPlugin', 'PicturePlugin'],
@@ -194,5 +195,8 @@ CMS_PLACEHOLDER_CONF = {
     },
     'page.html Masthead': {
         "plugins": ['MastheadPlugin'],
+    },
+    'page.html Content': {
+        "plugins": ['ContentPlugin'],
     },
 }

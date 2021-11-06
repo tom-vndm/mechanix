@@ -31,3 +31,35 @@ class MastheadButton(CMSPlugin):
 
     def __str__(self):
         return self.text
+
+
+class Content(CMSPlugin):
+    pass
+
+    def __str__(self):
+        return "Content"
+
+
+class ContentEntry(CMSPlugin):
+    htmlID = models.CharField(max_length=128)
+    heading = models.CharField(max_length=256)
+    subheading = models.CharField(max_length=256, null=True, blank=True)
+
+    def __str__(self):
+        return self.htmlID
+
+
+class ContentHighlights(CMSPlugin):
+    pass
+
+    def __str__(self):
+        return "Highlights"
+
+
+class ContentHighlightsEntry(CMSPlugin):
+    faIcon = models.CharField(max_length=64)
+    title = models.CharField(max_length=128)
+    content = models.CharField(max_length=2048)
+
+    def __str__(self):
+        return self.title
