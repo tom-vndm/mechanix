@@ -19,11 +19,11 @@
                                 {% endif %}
                                 {% if entry.doors %}
                                 <i class="fas fa-door-open"></i>
-                                {{ instance.doors|date:"H:i" }}&nbsp;
+                                {{ entry.doors|date:"H:i" }}&nbsp;
                                 {% endif %}
                                 {% if entry.start %}
                                 <i class="fas fa-clock"></i>
-                                {{ instance.start|date:"H:i" }}&nbsp;
+                                {{ entry.start|date:"H:i" }}&nbsp;
                                 {% endif %}
                             </div>
                             <p class="item-intro text-muted">{{ entry.subtitle }}</p>
@@ -38,7 +38,7 @@
                                     Illustration
                                 </li>
                             </ul> {% endcomment %}                            
-                            {% if buttonText %}
+                            {% if entry.buttonText %}
                             <a class="btn btn-success btn-xl text-uppercase" href="{{ entry.buttonUrl }}" role="button">
                                 {{ entry.buttonText }}
                             </a>
