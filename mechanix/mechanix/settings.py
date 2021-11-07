@@ -199,4 +199,7 @@ CMS_PLACEHOLDER_CONF = {
     'page.html Content': {
         "plugins": ['ContentPlugin'],
     },
+    'page.html Modals': {
+        "plugins": ['ContentModalPlugin'],
+    },
 }

@@ -1,6 +1,8 @@
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
-from .models import MenuItem, Masthead, MastheadButton, MastheadContent, Content, ContentEntry, ContentHighlights, ContentHighlightsEntry
+from .models import MenuItem, Masthead, MastheadButton, MastheadContent
+from .models import Content, ContentEntry, ContentHighlights, ContentHighlightsEntry
+from .models import ContentGrid, ContentGridEntry
 from django.utils.translation import gettext_lazy as _
 
 
@@ -77,7 +79,7 @@ class ContentEntryPlugin(CMSPluginBase):
     render_template = "content/contententry.html"
     cache = False
     allow_children = True
-    child_classes = ["ContentHighlightsPlugin"]
+    child_classes = ["ContentHighlightsPlugin", 'ContentGridPlugin']
     parent_classes = ['ContentPlugin']
 
     def render(self, context, instance, placeholder):
@@ -109,5 +111,44 @@ class ContentHighlightsEntryPlugin(CMSPluginBase):
     parent_classes = ['ContentHighlightsPlugin']
 
     def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class ContentGridPlugin(CMSPluginBase):
+    model = ContentGrid
+    name = _("Grid")
+    render_template = "content/grid/grid.html"
+    cache = False
+    allow_children = True
+    child_classes = ["ContentGridEntryPlugin"]
+    parent_classes = ['ContentEntryPlugin']
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class ContentGridEntryPlugin(CMSPluginBase):
+    model = ContentGridEntry
+    name = _("Grid entry")
+    render_template = "content/grid/gridentry.html"
+    cache = False
+    parent_classes = ['ContentGridPlugin']
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+@plugin_pool.register_plugin
+class ContentModalPlugin(CMSPluginBase):
+    name = _("Modals")
+    render_template = "content/grid/gridmodals.html"
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        context['grid_modals'] = ContentGridEntry.objects.all()
         context = super().render(context, instance, placeholder)
         return context

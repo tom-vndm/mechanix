@@ -1,0 +1,56 @@
+{% load cms_tags static i18n %}
+
+{% for entry in grid_modals %}
+<div class="portfolio-modal modal fade" id="Grid{{ entry.id|safe }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-bs-dismiss="modal"><img src="{% static 'img/close-icon.svg' %}" alt="Close modal" /></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <!-- Project details-->                            
+                            <img class="img-fluid d-block mx-auto" src="{{ entry.image.url }}" alt="{{ entry.title|safe }} Image" />
+                            <h2 class="text-uppercase">{{ entry.title }}</h2>
+                            <div class="h4">
+                                {% if entry.date %}
+                                <i class="fas fa-calendar-day"></i>
+                                {{ entry.date|date:"d/m/y" }}&nbsp;
+                                {% endif %}
+                                {% if entry.doors %}
+                                <i class="fas fa-door-open"></i>
+                                {{ instance.doors|date:"H:i" }}&nbsp;
+                                {% endif %}
+                                {% if entry.start %}
+                                <i class="fas fa-clock"></i>
+                                {{ instance.start|date:"H:i" }}&nbsp;
+                                {% endif %}
+                            </div>
+                            <p class="item-intro text-muted">{{ entry.subtitle }}</p>
+                            <p>{{ entry.description }}</p>
+{% comment %}                             <ul class="list-inline">
+                                <li>
+                                    <strong>Client:</strong>
+                                    Threads
+                                </li>
+                                <li>
+                                    <strong>Category:</strong>
+                                    Illustration
+                                </li>
+                            </ul> {% endcomment %}                            
+                            {% if buttonText %}
+                            <a class="btn btn-success btn-xl text-uppercase" href="{{ entry.buttonUrl }}" role="button">
+                                {{ entry.buttonText }}
+                            </a>
+                            {% endif %}
+                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                {% translate "Close" %}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

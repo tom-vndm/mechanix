@@ -1,5 +1,6 @@
 from django.db import models
 from cms.models.pluginmodel import CMSPlugin
+from djangocms_text_ckeditor.fields import HTMLField
 
 # Create your models here.
 
@@ -60,6 +61,28 @@ class ContentHighlightsEntry(CMSPlugin):
     faIcon = models.CharField(max_length=64)
     title = models.CharField(max_length=128)
     content = models.CharField(max_length=2048)
+
+    def __str__(self):
+        return self.title
+
+
+class ContentGrid(CMSPlugin):
+    pass
+
+    def __str__(self):
+        return "Grid"
+
+
+class ContentGridEntry(CMSPlugin):
+    image = models.ImageField(upload_to="Mechanix/Grid")
+    title = models.CharField(max_length=128)
+    subtitle = models.CharField(max_length=128)
+    description = HTMLField()
+    buttonUrl = models.CharField(max_length=256, null=True, blank=True)
+    buttonText = models.CharField(max_length=256, null=True, blank=True)
+    date = models.DateField(null=True, blank=True)
+    start = models.TimeField(null=True, blank=True)
+    doors = models.TimeField(null=True, blank=True)
 
     def __str__(self):
         return self.title

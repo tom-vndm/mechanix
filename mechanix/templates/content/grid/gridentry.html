@@ -1,0 +1,18 @@
+{% load cms_tags %}
+
+<div class="col-lg-4 col-sm-6 mb-4">
+    <div class="portfolio-item">
+        <a class="portfolio-link" data-bs-toggle="modal" href="#Grid{{ instance.id|safe }}">
+            <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                    {% comment %} <i class="fas fa-plus fa-3x"></i> {% endcomment %}
+                </div>
+            </div>
+            <img class="img-fluid" src="{{ instance.image.url }}" alt="{{ instance.title|safe }} Image" />
+        </a>
+        <div class="portfolio-caption">
+            <div class="portfolio-caption-heading">{{ instance.title }}</div>
+            <div class="portfolio-caption-subheading text-muted">{{ instance.date|date:"l j F" }}&nbsp;{{ instance.start|date:"H:i" }}</div>
+        </div>
+    </div>
+</div>
