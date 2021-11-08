@@ -5,7 +5,7 @@ from .models import Content, ContentEntry, ContentHighlights, ContentHighlightsE
 from .models import ContentGrid, ContentGridEntry, ContentFlow, ContentFlowEntryHTML
 from .models import ContentFlowEntryImage, ContentTeam, ContentTeamEntry
 from .models import ContentGallery, ContentGalleryEntry, Footer, FooterTextEntry
-from .models import FooterFontAwesomeEntry
+from .models import FooterFontAwesomeEntry, FooterHTMLEntry
 from django.utils.translation import gettext_lazy as _
 
 
@@ -147,6 +147,7 @@ class ContentGridEntryPlugin(CMSPluginBase):
         context = super().render(context, instance, placeholder)
         return context
 
+
 @plugin_pool.register_plugin
 class ContentModalPlugin(CMSPluginBase):
     name = _("Modals")
@@ -264,7 +265,9 @@ class FooterPlugin(CMSPluginBase):
     render_template = "footer/footer.html"
     cache = False
     allow_children = True
-    child_classes = ["FooterTextEntryPlugin", "FooterFontAwesomeEntryPlugin"]
+    child_classes = ["FooterTextEntryPlugin",
+                     "FooterFontAwesomeEntryPlugin", "FooterHTMLEntryPlugin"]
+
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         return context
@@ -284,10 +287,23 @@ class FooterTextEntryPlugin(CMSPluginBase):
 
 
 @plugin_pool.register_plugin
-class FooterTextEntryPlugin(CMSPluginBase):
+class FooterFontAwesomeEntryPlugin(CMSPluginBase):
     model = FooterFontAwesomeEntry
     name = _("Footer FontAwesome entry")
     render_template = "footer/footerFAentry.html"
+    cache = False
+    parent_classes = ['FooterPlugin']
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class FooterHTMLEntryPlugin(CMSPluginBase):
+    model = FooterHTMLEntry
+    name = _("Footer html entry")
+    render_template = "footer/footerhtmlentry.html"
     cache = False
     parent_classes = ['FooterPlugin']
 

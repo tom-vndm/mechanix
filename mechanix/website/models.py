@@ -12,6 +12,7 @@ class MenuItem(CMSPlugin):
     def __str__(self):
         return self.displayName
 
+
 class Masthead(CMSPlugin):
     background = models.ImageField(upload_to="Mechanix")
     alt = models.CharField(max_length=128)
@@ -19,12 +20,14 @@ class Masthead(CMSPlugin):
     def __str__(self):
         return self.alt
 
+
 class MastheadContent(CMSPlugin):
     htmlClasses = models.CharField(max_length=256)
     text = models.CharField(max_length=256)
 
     def __str__(self):
         return self.text
+
 
 class MastheadButton(CMSPlugin):
     link = models.CharField(max_length=128)
@@ -104,6 +107,7 @@ class ContentFlowEntryImage(CMSPlugin):
     def __str__(self):
         return self.title
 
+
 class ContentFlowEntryHTML(CMSPlugin):
     text = HTMLField()
 
@@ -170,3 +174,12 @@ class FooterFontAwesomeEntry(CMSPlugin):
 
     def __str__(self):
         return self.faClass
+
+
+class FooterHTMLEntry(CMSPlugin):
+    text = HTMLField()
+    pos = models.CharField(max_length=16, choices=[(
+        'L', 'Left'), ('M', 'Middle'), ('R', 'Right')])
+
+    def __str__(self):
+        return "Footer HTML"
