@@ -125,7 +125,7 @@ class ContentTeam(CMSPlugin):
 class ContentTeamEntry(CMSPlugin):
     image = models.ImageField(upload_to="Mechanix/Team")
     name = models.CharField(max_length=128)
-    function = models.CharField(max_length=128)
+    function = models.CharField(max_length=128, null=True, blank=True)
     linkedin = models.CharField(max_length=512, null=True, blank=True)
     mail = models.CharField(max_length=512, null=True, blank=True)
 

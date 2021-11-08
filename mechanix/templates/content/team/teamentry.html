@@ -1,11 +1,13 @@
 <div class="team-member">
     <img class="mx-auto rounded-circle" src="{{ instance.image.url }}" alt="{{ instance.name|safe }} Image" />
     <h4>{{ instance.name }}</h4>
+    {% if instance.function %}
     <p class="text-muted">{{ instance.function }}</p>
+    {% endif %}
     {% if instance.mail %}
-    <a class="btn btn-dark btn-social mx-2" href="mailto:{{ instance.mail }}"><i class="far fa-envelope"></i></a>
+    <a class="btn btn-dark btn-social mx-2 socialbutton" href="mailto:{{ instance.mail }}"><i class="far fa-envelope fa-lg"></i></a>
     {% endif %}
     {% if instance.linkedin %}
-    <a class="btn btn-dark btn-social mx-2" href="{{ instance.linkedin }}"><i class="fab fa-linkedin-in"></i></a>
+    <a class="btn btn-dark btn-social mx-2 socialbutton" href="{{ instance.linkedin }}"><i class="fab fa-linkedin-in fa-lg"></i></a>
     {% endif %}
 </div>
