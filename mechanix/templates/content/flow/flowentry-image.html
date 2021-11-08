@@ -1,0 +1,14 @@
+<div class="timeline-image"><img class="rounded-circle img-fluid" src="{{ instance.image.url }}" alt="{{ instance.title|safe }} Image" /></div>
+<div class="timeline-panel">
+    <div class="timeline-heading">
+        {% if instance.title %}
+        <h4>{{ instance.title }}</h4>
+        {% endif %}
+        {% if instance.subtitle %}
+        <h4 class="subheading">{{ instance.subtitle }}</h4>
+        {% endif %}
+    </div>
+    {% if instance.content %}
+    <div class="timeline-body"><p class="text-muted">{{ instance.content }}</p></div>
+    {% endif %}
+</div>

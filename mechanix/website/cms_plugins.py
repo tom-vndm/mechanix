@@ -2,7 +2,8 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from .models import MenuItem, Masthead, MastheadButton, MastheadContent
 from .models import Content, ContentEntry, ContentHighlights, ContentHighlightsEntry
-from .models import ContentGrid, ContentGridEntry
+from .models import ContentGrid, ContentGridEntry, ContentFlow, ContentFlowEntryHTML
+from .models import ContentFlowEntryImage, ContentTeam, ContentTeamEntry
 from django.utils.translation import gettext_lazy as _
 
 
@@ -79,7 +80,9 @@ class ContentEntryPlugin(CMSPluginBase):
     render_template = "content/contententry.html"
     cache = False
     allow_children = True
-    child_classes = ["ContentHighlightsPlugin", 'ContentGridPlugin']
+    child_classes = ["ContentHighlightsPlugin",
+                     'ContentGridPlugin', 'ContentFlowPlugin',
+                     'ContentTeamPlugin']
     parent_classes = ['ContentPlugin']
 
     def render(self, context, instance, placeholder):
@@ -150,5 +153,75 @@ class ContentModalPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context['grid_modals'] = ContentGridEntry.objects.all()
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class ContentFlowPlugin(CMSPluginBase):
+    model = ContentFlow
+    name = _("Flow")
+    render_template = "content/flow/flow.html"
+    cache = False
+    allow_children = True
+    child_classes = ["ContentFlowEntryImagePlugin",
+                     "ContentFlowEntryHTMLPlugin"]
+    parent_classes = ['ContentEntryPlugin']
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class ContentFlowEntryImagePlugin(CMSPluginBase):
+    model = ContentFlowEntryImage
+    name = _("Flow entry (image)")
+    render_template = "content/flow/flowentry-image.html"
+    cache = False
+    parent_classes = ['ContentFlowPlugin']
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class ContentFlowEntryHTMLPlugin(CMSPluginBase):
+    model = ContentFlowEntryHTML
+    name = _("Flow entry (html)")
+    render_template = "content/flow/flowentry-text.html"
+    cache = False
+    parent_classes = ['ContentFlowPlugin']
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class ContentTeamPlugin(CMSPluginBase):
+    model = ContentTeam
+    name = _("Team")
+    render_template = "content/team/team.html"
+    cache = False
+    allow_children = True
+    child_classes = ["ContentTeamEntryPlugin"]
+    parent_classes = ['ContentEntryPlugin']
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class ContentTeamEntryPlugin(CMSPluginBase):
+    model = ContentTeamEntry
+    name = _("Team entry")
+    render_template = "content/team/teamentry.html"
+    cache = False
+    parent_classes = ['ContentTeamPlugin']
+
+    def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         return context

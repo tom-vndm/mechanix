@@ -1,0 +1,15 @@
+{% load cms_tags %}
+
+<ul class="timeline">
+
+{% for plugin in instance.child_plugin_instances %}
+    {% if forloop.counter|divisibleby:"2" %}
+    <li>   
+    {% else %}
+    <li class="timeline-inverted">
+    {% endif %}
+    {% render_plugin plugin %}
+    </li>
+{% endfor %}
+
+</ul>

@@ -86,3 +86,44 @@ class ContentGridEntry(CMSPlugin):
 
     def __str__(self):
         return self.title
+
+
+class ContentFlow(CMSPlugin):
+    pass
+
+    def __str__(self):
+        return "Flow"
+
+
+class ContentFlowEntryImage(CMSPlugin):
+    image = models.ImageField(upload_to="Mechanix/Flow")
+    title = models.CharField(max_length=256, null=True, blank=True)
+    subtitle = models.CharField(max_length=256, null=True, blank=True)
+    content = models.CharField(max_length=2048, null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+class ContentFlowEntryHTML(CMSPlugin):
+    text = HTMLField()
+
+    def __str__(self):
+        return "Flow HTML"
+
+
+class ContentTeam(CMSPlugin):
+    pass
+
+    def __str__(self):
+        return "Team"
+
+
+class ContentTeamEntry(CMSPlugin):
+    image = models.ImageField(upload_to="Mechanix/Team")
+    name = models.CharField(max_length=128)
+    function = models.CharField(max_length=128)
+    linkedin = models.CharField(max_length=512, null=True, blank=True)
+    mail = models.CharField(max_length=512, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
