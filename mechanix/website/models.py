@@ -127,3 +127,46 @@ class ContentTeamEntry(CMSPlugin):
 
     def __str__(self):
         return self.name
+
+
+class ContentGallery(CMSPlugin):
+    pass
+
+    def __str__(self):
+        return "Team"
+
+
+class ContentGalleryEntry(CMSPlugin):
+    image = models.ImageField(upload_to="Mechanix/Gallery")
+    alt = models.CharField(max_length=512)
+    url = models.CharField(max_length=512, null=True, blank=True)
+
+    def __str__(self):
+        return self.alt
+
+
+class Footer(CMSPlugin):
+    pass
+
+    def __str__(self):
+        return "Footer"
+
+
+class FooterTextEntry(CMSPlugin):
+    text = models.CharField(max_length=512)
+    url = models.CharField(max_length=512, null=True, blank=True)
+    pos = models.CharField(max_length=16, choices=[(
+        'L', 'Left'), ('M', 'Middle'), ('R', 'Right')])
+
+    def __str__(self):
+        return self.text
+
+
+class FooterFontAwesomeEntry(CMSPlugin):
+    faClass = models.CharField(max_length=512)
+    url = models.CharField(max_length=512)
+    pos = models.CharField(max_length=16, choices=[(
+        'L', 'Left'), ('M', 'Middle'), ('R', 'Right')])
+
+    def __str__(self):
+        return self.faClass

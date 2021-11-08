@@ -1,0 +1,9 @@
+{% load cms_tags %}
+
+<div class="py-5">
+    <div class="row align-items-center">
+        {% for plugin in instance.child_plugin_instances %}
+            {% render_plugin plugin %}
+        {% endfor %}
+    </div>
+</div>

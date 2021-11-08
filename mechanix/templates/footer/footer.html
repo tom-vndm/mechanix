@@ -1,0 +1,29 @@
+{% load cms_tags %}
+
+<footer class="footer py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-lg-start">
+                {% for plugin in instance.child_plugin_instances %}
+                    {% if plugin.pos == "L" %}
+                        {% render_plugin plugin %}
+                    {% end if %}
+                {% endfor %}
+            </div>
+            <div class="col-lg-4 my-3 my-lg-0">
+                {% for plugin in instance.child_plugin_instances %}
+                    {% if plugin.pos == "M" %}
+                        {% render_plugin plugin %}
+                    {% end if %}
+                {% endfor %}
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                {% for plugin in instance.child_plugin_instances %}
+                    {% if plugin.pos == "R" %}
+                        {% render_plugin plugin %}
+                    {% end if %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</footer>

@@ -4,6 +4,8 @@ from .models import MenuItem, Masthead, MastheadButton, MastheadContent
 from .models import Content, ContentEntry, ContentHighlights, ContentHighlightsEntry
 from .models import ContentGrid, ContentGridEntry, ContentFlow, ContentFlowEntryHTML
 from .models import ContentFlowEntryImage, ContentTeam, ContentTeamEntry
+from .models import ContentGallery, ContentGalleryEntry, Footer, FooterTextEntry
+from .models import FooterFontAwesomeEntry
 from django.utils.translation import gettext_lazy as _
 
 
@@ -82,7 +84,7 @@ class ContentEntryPlugin(CMSPluginBase):
     allow_children = True
     child_classes = ["ContentHighlightsPlugin",
                      'ContentGridPlugin', 'ContentFlowPlugin',
-                     'ContentTeamPlugin']
+                     'ContentTeamPlugin', 'ContentGalleryPlugin']
     parent_classes = ['ContentPlugin']
 
     def render(self, context, instance, placeholder):
@@ -221,6 +223,73 @@ class ContentTeamEntryPlugin(CMSPluginBase):
     render_template = "content/team/teamentry.html"
     cache = False
     parent_classes = ['ContentTeamPlugin']
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class ContentGalleryPlugin(CMSPluginBase):
+    model = ContentGallery
+    name = _("Gallery")
+    render_template = "content/gallery/gallery.html"
+    cache = False
+    allow_children = True
+    child_classes = ["ContentGalleryEntryPlugin"]
+    parent_classes = ['ContentEntryPlugin']
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class ContentGalleryEntryPlugin(CMSPluginBase):
+    model = ContentGalleryEntry
+    name = _("Gallery entry")
+    render_template = "content/gallery/galleryentry.html"
+    cache = False
+    parent_classes = ['ContentGalleryPlugin']
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class FooterPlugin(CMSPluginBase):
+    model = Footer
+    name = _("Footer")
+    render_template = "footer/footer.html"
+    cache = False
+    allow_children = True
+    child_classes = ["FooterTextEntryPlugin", "FooterFontAwesomeEntryPlugin"]
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class FooterTextEntryPlugin(CMSPluginBase):
+    model = FooterTextEntry
+    name = _("Footer text entry")
+    render_template = "footer/footertextentry.html"
+    cache = False
+    parent_classes = ['FooterPlugin']
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class FooterTextEntryPlugin(CMSPluginBase):
+    model = FooterFontAwesomeEntry
+    name = _("Footer FontAwesome entry")
+    render_template = "footer/footerFAentry.html"
+    cache = False
+    parent_classes = ['FooterPlugin']
 
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)

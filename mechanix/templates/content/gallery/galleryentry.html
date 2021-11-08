@@ -1,0 +1,7 @@
+<div class="col-md-3 col-sm-6 my-3">
+    {% if instance.url %}
+    <a href="{{ instance.url }}"><img class="img-fluid img-brand d-block mx-auto" src="{{ instance.image.url }}" alt="{{ instance.alt }}" /></a>
+    {% else %}
+    <a href="#"><img class="img-fluid img-brand d-block mx-auto" src="{{ instance.image.url }}" alt="{{ instance.alt }}" /></a>
+    {% endif %}
+</div>
