@@ -1,5 +1,11 @@
+{% load static %}
+
 <div class="team-member">
+    {% if instance.image %}
     <img class="mx-auto rounded-circle" src="{{ instance.image.url }}" alt="{{ instance.name|safe }} Image" />
+    {% else %}
+    <img class="mx-auto rounded-circle" src="{% static 'person-placeholder.jpg' %}" alt="{{ instance.name|safe }} Image" />
+    {% endif %}
     <h4>{{ instance.name }}</h4>
     {% if instance.function %}
     <p class="text-muted">{{ instance.function }}</p>

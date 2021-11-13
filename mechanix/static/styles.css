@@ -10,6 +10,11 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+/*!
+ * Mechanix & VTK Ondersteuning VZW
+ * Code written by Tom Vandamme (https://github.com/tom-vndm)
+ * Licensed under MIT
+ */
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -11406,8 +11411,8 @@ p {
   }
 }
 header.masthead {
-  padding-top: 10.5rem;
-  padding-bottom: 6rem;
+  padding-top: 0rem; /* 10.5rem; */
+  padding-bottom: 0rem; /* 6rem; */
   text-align: center;
   color: #fff;
   background-repeat: no-repeat;
@@ -11432,8 +11437,8 @@ header.masthead .masthead-heading {
 
 @media (min-width: 768px) {
   header.masthead {
-    padding-top: 17rem;
-    padding-bottom: 12.5rem;
+    padding-top: 0rem; /* 17rem; */
+    padding-bottom: Orem; /* 12.5rem; */
   }
   header.masthead .masthead-subheading {
     font-size: 2.25rem;
@@ -11728,4 +11733,25 @@ header.masthead .masthead-heading {
   background-color:#0e0076;
   border-color:#0e0076;
   color:#f8f9fa;
+}
+
+.carousel-item {
+  height: 85vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.carousel-masthead {
+  position: absolute;
+  top:30vh;
+  right: 0rem;
+  left: 0rem;
+}
+
+.masthead-text-element {
+  display: inline-block;
 }

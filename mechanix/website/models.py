@@ -14,27 +14,25 @@ class MenuItem(CMSPlugin):
 
 
 class Masthead(CMSPlugin):
-    background = models.ImageField(upload_to="Mechanix")
-    alt = models.CharField(max_length=128)
+    subText = models.CharField(max_length=256, null=True, blank=True)
+    headText = models.CharField(max_length=256, null=True, blank=True)
+    buttonLink = models.CharField(max_length=512, null=True, blank=True)
+    buttonText = models.CharField(max_length=256, null=True, blank=True)
 
     def __str__(self):
-        return self.alt
+        if self.headText:
+            return self.headText
+        else:
+            return "Masthead"
 
 
-class MastheadContent(CMSPlugin):
-    htmlClasses = models.CharField(max_length=256)
-    text = models.CharField(max_length=256)
-
-    def __str__(self):
-        return self.text
-
-
-class MastheadButton(CMSPlugin):
-    link = models.CharField(max_length=128)
-    text = models.CharField(max_length=256)
+class MastheadImage(CMSPlugin):
+    image = models.ImageField(upload_to="Mechanix/Masthead")
+    headCaption = models.CharField(max_length=256)
+    subCaption = models.CharField(max_length=256, null=True, blank=True)
 
     def __str__(self):
-        return self.text
+        return self.headCaption
 
 
 class Content(CMSPlugin):
@@ -123,7 +121,7 @@ class ContentTeam(CMSPlugin):
 
 
 class ContentTeamEntry(CMSPlugin):
-    image = models.ImageField(upload_to="Mechanix/Team")
+    image = models.ImageField(upload_to="Mechanix/Team", null=True, blank=True)
     name = models.CharField(max_length=128)
     function = models.CharField(max_length=128, null=True, blank=True)
     linkedin = models.CharField(max_length=512, null=True, blank=True)

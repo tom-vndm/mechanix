@@ -1,0 +1,52 @@
+{% load cms_tags %}
+
+<header class="masthead">
+    <div id="mastheadCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">            
+            {% for plugin in instance.child_plugin_instances %}
+                {% if forloop.counter0 == 0 %}
+                    <button type="button" data-bs-target="#mastheadCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label={{ plugin.headCaption }}></button>
+                {% else %}
+                    <button type="button" data-bs-target="#mastheadCaptions" data-bs-slide-to={{ forloop.counter0 }} aria-label={{ plugin.headCaption }}></button>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="carousel-inner">
+            {% for plugin in instance.child_plugin_instances %}
+                {% if forloop.counter0 == 0 %}
+                    <div class="carousel-item active" style="background-image: url({{plugin.image.url}})">
+                {% else %}
+                    <div class="carousel-item" style="background-image: url({{plugin.image.url}})">
+                {% endif %}
+
+                    <div class="carousel-caption">
+                        <h5 class="text-dark bg-light masthead-text-element bg-opacity-75 p-1">{{ plugin.headCaption }}</h5> <br>
+                        {% if plugin.subCaption %}
+                            <p class="text-dark bg-light masthead-text-element bg-opacity-75 p-1">{{ plugin.subCaption }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container carousel-masthead">
+            {% if instance.subText %}
+            <div class="masthead-subheading text-dark bg-light masthead-text-element bg-opacity-75 p-2">{{ instance.subText }}</div> <br>
+            {% endif %}
+            {% if instance.headText %}
+            <div class="masthead-heading text-uppercase text-dark bg-light masthead-text-element bg-opacity-75 p-2">{{ instance.headText }}</div> <br>
+            {% endif %}
+            {% if instance.buttonLink %}
+            <a class="btn btn-primary btn-xl text-uppercase" href={{ instance.buttonLink }}>{{ instance.buttonText }}</a>
+            {% endif %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mastheadCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mastheadCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</header>

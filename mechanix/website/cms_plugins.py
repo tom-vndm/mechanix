@@ -1,6 +1,6 @@
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
-from .models import MenuItem, Masthead, MastheadButton, MastheadContent
+from .models import MenuItem, Masthead, MastheadImage
 from .models import Content, ContentEntry, ContentHighlights, ContentHighlightsEntry
 from .models import ContentGrid, ContentGridEntry, ContentFlow, ContentFlowEntryHTML
 from .models import ContentFlowEntryImage, ContentTeam, ContentTeamEntry
@@ -25,10 +25,10 @@ class MenuItemPlugin(CMSPluginBase):
 class MastheadPlugin(CMSPluginBase):
     model = Masthead
     name = _("Masthead")
-    render_template = "masthead/masthead.html"
+    render_template = "masthead.html"
     cache = False
     allow_children = True
-    child_classes = ['MastheadContentPlugin', 'MastheadButtonPlugin']
+    child_classes = ['MastheadImagePlugin']
 
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
@@ -36,24 +36,11 @@ class MastheadPlugin(CMSPluginBase):
 
 
 @plugin_pool.register_plugin
-class MastheadContentPlugin(CMSPluginBase):
-    model = MastheadContent
-    name = _("Masthead content")
-    render_template = "masthead/mastheadcontent.html"
+class MastheadImagePlugin(CMSPluginBase):
+    model = MastheadImage
+    name = _("Masthead Image")
     cache = False
-    parent_classes = ['MastheadPlugin']
-
-    def render(self, context, instance, placeholder):
-        context = super().render(context, instance, placeholder)
-        return context
-
-
-@plugin_pool.register_plugin
-class MastheadButtonPlugin(CMSPluginBase):
-    model = MastheadButton
-    name = _("Masthead button")
-    render_template = "masthead/mastheadbutton.html"
-    cache = False
+    render_plugin = False
     parent_classes = ['MastheadPlugin']
 
     def render(self, context, instance, placeholder):

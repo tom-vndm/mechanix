@@ -1,9 +1,0 @@
-{% load cms_tags %}
-
-<header class="masthead" style="background-image:url({{ instance.background.url }})">
-    <div class="container">
-        {% for plugin in instance.child_plugin_instances %}
-            {% render_plugin plugin %}
-        {% endfor %}
-    </div>
-</header>
