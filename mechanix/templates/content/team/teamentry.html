@@ -1,15 +1,17 @@
 {% load static %}
 
 <div class="team-member">
-    {% if instance.image %}
-    <img class="mx-auto rounded-circle" src="{{ instance.image.url }}" alt="{{ instance.name|safe }} Image" />
+    <a class= "modalbutton" data-bs-toggle="modal" href="#Team{{ instance.id|safe }}">
+    {% if instance.squareImage %}
+    <img class="mx-auto rounded-circle modalbutton" src="{{ instance.squareImage.url }}" alt="{{ instance.name|safe }} Image" />
     {% else %}
-    <img class="mx-auto rounded-circle" src="{% static 'person-placeholder.jpg' %}" alt="{{ instance.name|safe }} Image" />
+    <img class="mx-auto rounded-circle modalbutton" src="{% static 'person-placeholder.jpg' %}" alt="{{ instance.name|safe }} Image" />
     {% endif %}
     <h4>{{ instance.name }}</h4>
     {% if instance.function %}
     <p class="text-muted">{{ instance.function }}</p>
-    {% endif %}
+    {% endif %}    
+    </a>
     {% if instance.mail %}
     <a class="btn btn-dark btn-social mx-2 socialbutton" href="mailto:{{ instance.mail }}"><i class="far fa-envelope fa-lg"></i></a>
     {% endif %}

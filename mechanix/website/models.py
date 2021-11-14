@@ -121,11 +121,13 @@ class ContentTeam(CMSPlugin):
 
 
 class ContentTeamEntry(CMSPlugin):
-    image = models.ImageField(upload_to="Mechanix/Team", null=True, blank=True)
+    squareImage = models.ImageField(upload_to="Mechanix/Team/Square", null=True, blank=True)
+    verticalImage = models.ImageField(upload_to="Mechanix/Team/Vertical", null=True, blank=True)
     name = models.CharField(max_length=128)
     function = models.CharField(max_length=128, null=True, blank=True)
     linkedin = models.CharField(max_length=512, null=True, blank=True)
     mail = models.CharField(max_length=512, null=True, blank=True)
+    text = HTMLField(null=True, blank=True)
 
     def __str__(self):
         return self.name

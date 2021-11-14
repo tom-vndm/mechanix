@@ -138,11 +138,12 @@ class ContentGridEntryPlugin(CMSPluginBase):
 @plugin_pool.register_plugin
 class ContentModalPlugin(CMSPluginBase):
     name = _("Modals")
-    render_template = "content/grid/gridmodals.html"
+    render_template = "content/modals.html"
     cache = False
 
     def render(self, context, instance, placeholder):
         context['grid_modals'] = ContentGridEntry.objects.all()
+        context['team_modals'] = ContentTeamEntry.objects.all()
         context = super().render(context, instance, placeholder)
         return context
 
