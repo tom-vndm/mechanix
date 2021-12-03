@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-03 13:22+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: website/cms_plugins.py:15
+msgid "Menu item"
+msgstr ""
+
+#: website/cms_plugins.py:27
+msgid "Masthead"
+msgstr ""
+
+#: website/cms_plugins.py:41
+msgid "Masthead Image"
+msgstr ""
+
+#: website/cms_plugins.py:54
+msgid "Content wrapper"
+msgstr ""
+
+#: website/cms_plugins.py:68
+msgid "Content entry"
+msgstr ""
+
+#: website/cms_plugins.py:85
+msgid "Highlights"
+msgstr ""
+
+#: website/cms_plugins.py:100
+msgid "Highlights entry"
+msgstr ""
+
+#: website/cms_plugins.py:113
+msgid "Grid"
+msgstr ""
+
+#: website/cms_plugins.py:128
+msgid "Grid entry"
+msgstr ""
+
+#: website/cms_plugins.py:140
+msgid "Modals"
+msgstr ""
+
+#: website/cms_plugins.py:154
+msgid "Flow"
+msgstr ""
+
+#: website/cms_plugins.py:170
+msgid "Flow entry (image)"
+msgstr ""
+
+#: website/cms_plugins.py:183
+msgid "Flow entry (html)"
+msgstr ""
+
+#: website/cms_plugins.py:196
+msgid "Team"
+msgstr ""
+
+#: website/cms_plugins.py:211
+msgid "Team entry"
+msgstr ""
+
+#: website/cms_plugins.py:224
+msgid "Gallery"
+msgstr ""
+
+#: website/cms_plugins.py:239
+msgid "Gallery entry"
+msgstr ""
+
+#: website/cms_plugins.py:252
+msgid "Footer"
+msgstr ""
+
+#: website/cms_plugins.py:267
+msgid "Footer text entry"
+msgstr ""
+
+#: website/cms_plugins.py:280
+msgid "Footer FontAwesome entry"
+msgstr ""
+
+#: website/cms_plugins.py:293
+msgid "Footer html entry"
+msgstr ""

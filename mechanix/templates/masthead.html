@@ -20,9 +20,11 @@
                 {% endif %}
 
                     <div class="carousel-caption">
-                        <h5 class="text-dark bg-light masthead-text-element bg-opacity-75 p-1">{{ plugin.headCaption }}</h5> <br>
+                        {% comment %} <h5 class="text-dark bg-light masthead-text-element bg-opacity-75 p-1">{{ plugin.headCaption }}</h5> <br> {% endcomment %}
+                        <h5 class="text-light masthead-text-element">{{ plugin.headCaption }}</h5> <br>
                         {% if plugin.subCaption %}
-                            <p class="text-dark bg-light masthead-text-element bg-opacity-75 p-1">{{ plugin.subCaption }}</p>
+                            <p class="text-light masthead-text-element">{{ plugin.subCaption }}</p>
+                            {% comment %} <p class="text-dark bg-light masthead-text-element bg-opacity-75 p-1">{{ plugin.subCaption }}</p> {% endcomment %}
                         {% endif %}
                     </div>
                 </div>
@@ -31,10 +33,12 @@
         </div>
         <div class="container carousel-masthead">
             {% if instance.subText %}
-            <div class="masthead-subheading text-dark bg-light masthead-text-element bg-opacity-75 p-2">{{ instance.subText }}</div> <br>
+            {% comment %} <div class="masthead-subheading text-dark bg-light masthead-text-element bg-opacity-75 p-2">{{ instance.subText }}</div> <br> {% endcomment %}
+            <div class="masthead-subheading text-light masthead-text-element">{{ instance.subText }}</div> <br>
             {% endif %}
             {% if instance.headText %}
-            <div class="masthead-heading text-uppercase text-dark bg-light masthead-text-element bg-opacity-75 p-2">{{ instance.headText }}</div> <br>
+            {% comment %} <div class="masthead-heading text-uppercase text-dark bg-light masthead-text-element bg-opacity-75 p-2">{{ instance.headText }}</div> <br> {% endcomment %}
+            <div class="masthead-heading text-uppercase text-light masthead-text-element">{{ instance.headText }}</div> <br>
             {% endif %}
             {% if instance.buttonLink %}
             <a class="btn btn-primary btn-xl text-uppercase" href={{ instance.buttonLink }}>{{ instance.buttonText }}</a>

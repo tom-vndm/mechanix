@@ -1,6 +1,7 @@
 from django.db import models
 from cms.models.pluginmodel import CMSPlugin
 from djangocms_text_ckeditor.fields import HTMLField
+from filer.fields.folder import FilerFolderField
 
 # Create your models here.
 
@@ -84,6 +85,7 @@ class ContentGridEntry(CMSPlugin):
     date = models.DateField(null=True, blank=True)
     start = models.TimeField(null=True, blank=True)
     doors = models.TimeField(null=True, blank=True)
+    imageFolder = FilerFolderField(null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.title
