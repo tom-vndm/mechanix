@@ -8,7 +8,11 @@
                     {% comment %} <i class="fas fa-plus fa-3x"></i> {% endcomment %}
                 </div>
             </div>
+            {% if instance.passed %}
+            <img class="img-fluid" src="{{ instance.image_grayscale.url }}" alt="{{ instance.title|safe }} Image" />
+            {% else %}
             <img class="img-fluid" src="{{ instance.image.url }}" alt="{{ instance.title|safe }} Image" />
+            {% endif %}
         </a>
         <div class="portfolio-caption">
             <div class="portfolio-caption-heading">{{ instance.title }}</div>

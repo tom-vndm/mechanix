@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'djangocms_snippet',
     'djangocms_style',
     'website.apps.WebsiteConfig',
+    'imagekit',
 ]
 
 MIDDLEWARE = [

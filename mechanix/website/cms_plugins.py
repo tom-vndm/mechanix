@@ -2,7 +2,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from .models import MenuItem, Masthead, MastheadImage
 from .models import Content, ContentEntry, ContentHighlights, ContentHighlightsEntry
-from .models import ContentGrid, ContentGridEntry, ContentFlow, ContentFlowEntryHTML
+from .models import ContentGrid, Event, ContentFlow, ContentFlowEntryHTML
 from .models import ContentFlowEntryImage, ContentTeam, ContentTeamEntry
 from .models import ContentGallery, ContentGalleryEntry, Footer, FooterTextEntry
 from .models import FooterFontAwesomeEntry, FooterHTMLEntry
@@ -114,7 +114,7 @@ class ContentGridPlugin(CMSPluginBase):
     render_template = "content/grid/grid.html"
     cache = False
     allow_children = True
-    child_classes = ["ContentGridEntryPlugin"]
+    child_classes = ["EventPlugin"]
     parent_classes = ['ContentEntryPlugin']
 
     def render(self, context, instance, placeholder):
@@ -123,8 +123,8 @@ class ContentGridPlugin(CMSPluginBase):
 
 
 @plugin_pool.register_plugin
-class ContentGridEntryPlugin(CMSPluginBase):
-    model = ContentGridEntry
+class EventPlugin(CMSPluginBase):
+    model = Event
     name = _("Grid entry")
     render_template = "content/grid/gridentry.html"
     cache = False
@@ -142,7 +142,7 @@ class ContentModalPlugin(CMSPluginBase):
     cache = False
 
     def render(self, context, instance, placeholder):
-        context['grid_modals'] = ContentGridEntry.objects.all()
+        context['grid_modals'] = Event.objects.all()
         context['team_modals'] = ContentTeamEntry.objects.all()
         context = super().render(context, instance, placeholder)
         return context
