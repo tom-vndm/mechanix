@@ -22,5 +22,9 @@ from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
+    re_path(r'^fobi/', include('fobi.urls.view')),
+    re_path(r'^fobi/', include('fobi.urls.edit')),
+    re_path(r'^fobi/plugins/form-handlers/db-store/',
+            include('fobi.contrib.plugins.form_handlers.db_store.urls')),
     re_path(r'^', include('cms.urls')),
  ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
