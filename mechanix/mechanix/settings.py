@@ -260,3 +260,5 @@ CMS_PLACEHOLDER_CONF = {
         "plugins": ['FooterPlugin'],
     },
 }
+
+FOBI_DEFAULT_THEME = 'foundation5'

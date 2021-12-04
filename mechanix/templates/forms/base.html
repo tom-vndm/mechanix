@@ -1,0 +1,87 @@
+{% extends "foundation5/_base.html" %}
+
+{# Foundation 5 master base template #}
+
+{% load static cms_tags menu_tags i18n %}
+
+{% block stylesheets %}
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock title %}</title>
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <link href="{% static 'styles.css' %}" rel="stylesheet" />
+{% endblock stylesheets %}
+
+{% block html-attributes %}{% endblock html-attributes %}
+
+{% block navbar-wrapper %}
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'logo_large.png' %}" alt="Logo">
+                </a>
+            </div>
+        </nav>
+{% endblock navbar-wrapper %}
+
+{% block main-content-wrapper %}
+      {% block messages-wrapper %}
+          {% include fobi_theme.messages_snippet_template_name %}
+      {% endblock messages-wrapper %}
+
+{% block main-content %}
+<div class="row {#left#}">
+    <div{% block main-content-inner-attrs %} class="large-12 columns"{% endblock main-content-inner-attrs %}>
+    
+      <!-- Content -->
+
+      {% block content-wrapper %}
+
+          {% block content %}
+          <h3>Get in Touch!</h3>
+          <hr>
+
+          <h4 class="subheader">Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Donec
+          dignissim nibh fermentum odio ornare sagittis.</h4>
+
+          <div class="show-for-small" style="text-align: center">
+            <a class="small radius button" href="#">Call To Action!</a><br>
+            <a class="small radius button" href="#">Call To Action!</a>
+          </div>
+          {% endblock content %}
+      
+      {% endblock content-wrapper %}
+
+      {% block sidebar-wrapper %}
+      <div class="large-4 columns hide-for-small">
+        {% block sidebar %}
+        {% block sidebar-content %}
+        <h4>Get In Touch!</h4>
+        <hr>
+        <a href="#">
+        <div class="panel radius callout" style="text-align: center">
+          <strong>Call To Action!</strong>
+        </div></a> <a href="#">
+        <div class="panel radius callout" style="text-align: center">
+          <strong>Call To Action!</strong>
+        </div></a>
+        {% endblock sidebar-content %}
+        {% endblock sidebar %}
+      </div><!-- End Content -->
+      {% endblock sidebar-wrapper %}
+    </div>
+    
+</div>
+
+{% endblock main-content %}
+{% endblock main-content-wrapper %}
+
+{% block javascripts %}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'scripts.js' %}"></script>
+{% endblock javascripts %}
