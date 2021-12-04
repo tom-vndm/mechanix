@@ -9,7 +9,7 @@ class MechanixTheme(Foundation5Theme):
     html_classes = ['bg-light', ]
     base_template = 'forms/base.html'
     form_ajax = 'forms/form_ajax.html'
-    base_edit_template = 'foundation5/base.html'
+    base_edit_template = 'forms/base_old.html'
 
 
 # It's important to set the `force` argument to True, in
