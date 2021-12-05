@@ -262,3 +262,5 @@ CMS_PLACEHOLDER_CONF = {
 }
 
 FOBI_DEFAULT_THEME = 'foundation5'
+
+LOGIN_URL = '/admin/login'

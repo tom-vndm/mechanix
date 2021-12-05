@@ -23,7 +23,6 @@ from django.conf.urls.i18n import i18n_patterns
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('events/', include('events.urls')),
-    re_path(r'^accounts/login/', admin.site.urls),
     re_path(r'^fobi/', include('fobi.urls.view')),
     re_path(r'^fobi/', include('fobi.urls.edit')),
     re_path(r'^fobi/plugins/form-handlers/db-store/',
