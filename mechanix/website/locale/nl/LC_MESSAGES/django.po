@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-03 13:22+0100\n"
+"POT-Creation-Date: 2021-12-05 23:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: website/cms_plugins.py:15
 msgid "Menu item"
 msgstr ""
@@ -49,54 +50,50 @@ msgstr ""
 msgid "Grid"
 msgstr ""
 
-#: website/cms_plugins.py:128
-msgid "Grid entry"
-msgstr ""
-
-#: website/cms_plugins.py:140
+#: website/cms_plugins.py:127
 msgid "Modals"
 msgstr ""
 
-#: website/cms_plugins.py:154
+#: website/cms_plugins.py:141
 msgid "Flow"
 msgstr ""
 
-#: website/cms_plugins.py:170
+#: website/cms_plugins.py:157
 msgid "Flow entry (image)"
 msgstr ""
 
-#: website/cms_plugins.py:183
+#: website/cms_plugins.py:170
 msgid "Flow entry (html)"
 msgstr ""
 
-#: website/cms_plugins.py:196
+#: website/cms_plugins.py:183
 msgid "Team"
 msgstr ""
 
-#: website/cms_plugins.py:211
+#: website/cms_plugins.py:198
 msgid "Team entry"
 msgstr ""
 
-#: website/cms_plugins.py:224
+#: website/cms_plugins.py:211
 msgid "Gallery"
 msgstr ""
 
-#: website/cms_plugins.py:239
+#: website/cms_plugins.py:226
 msgid "Gallery entry"
 msgstr ""
 
-#: website/cms_plugins.py:252
+#: website/cms_plugins.py:239
 msgid "Footer"
 msgstr ""
 
-#: website/cms_plugins.py:267
+#: website/cms_plugins.py:254
 msgid "Footer text entry"
 msgstr ""
 
-#: website/cms_plugins.py:280
+#: website/cms_plugins.py:267
 msgid "Footer FontAwesome entry"
 msgstr ""
 
-#: website/cms_plugins.py:293
+#: website/cms_plugins.py:280
 msgid "Footer html entry"
 msgstr ""

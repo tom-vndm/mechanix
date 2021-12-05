@@ -28,12 +28,10 @@
             </div>
         </nav>
 {% endblock navbar-wrapper %}
-
 {% block main-content-wrapper %}
-      {% block messages-wrapper %}
+              {% block messages-wrapper %}
           {% include fobi_theme.messages_snippet_template_name %}
       {% endblock messages-wrapper %}
-
 {% block main-content %}
 <div class="row {#left#}">
     <div{% block main-content-inner-attrs %} class="large-12 columns"{% endblock main-content-inner-attrs %}>
@@ -41,7 +39,6 @@
       <!-- Content -->
 
       {% block content-wrapper %}
-
           {% block content %}
           <h3>Get in Touch!</h3>
           <hr>

@@ -1,0 +1,19 @@
+{% extends "mail/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;">{% trans 'greet' %} {{naam}}!</p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"> </p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;">{% trans 'Je-inschrijving-voor' %} {{eventNaam}} {% trans 'is-goed-aangekomen' %} {% trans 'met-onderstaande-gegevens' %}:</p>
+{% for k, v in formData.items %}
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;">{{v.0}}: {{v.1}}</p>
+{% endfor %}
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"> </p>
+{% if paymentNeeded %}
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;">{% trans 'paymentConfirmationNotice' %}</p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"> </p>
+{% endif %}
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;">{% trans 'mailClosure' %}</p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;">Mechanix</p>
+{% endblock content %}

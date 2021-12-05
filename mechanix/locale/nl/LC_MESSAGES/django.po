@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-03 13:22+0100\n"
+"POT-Creation-Date: 2021-12-05 23:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,43 @@ msgstr "Sluiten"
 msgid "Photos"
 msgstr "Foto's"
 
+#: templates/forms/form_entry_inactive_ajax.html:12
+msgid "This form is not active."
+msgstr ""
+
 #: templates/language.html:6
 msgid "ChangeLang"
 msgstr "Taal"
+
+#: templates/mail/payment.html:6 templates/mail/registration.html:6
+msgid "greet"
+msgstr "Hey"
+
+#: templates/mail/payment.html:8
+msgid "Je-betaling-voor"
+msgstr "Je betaling voor"
+
+#: templates/mail/payment.html:8 templates/mail/registration.html:8
+msgid "is-goed-aangekomen"
+msgstr "is goed aangekomen"
+
+#: templates/mail/payment.html:8 templates/mail/registration.html:8
+msgid "met-onderstaande-gegevens"
+msgstr "met onderstaande gegevens"
+
+#
+#: templates/mail/payment.html:13 templates/mail/registration.html:17
+msgid "mailClosure"
+msgstr "Tot dan!"
+
+#: templates/mail/registration.html:8
+msgid "Je-inschrijving-voor"
+msgstr "Je inschrijving voor"
+
+#: templates/mail/registration.html:14
+msgid "paymentConfirmationNotice"
+msgstr ""
+"Als je betaling gelukt is, zou je daarover nog twee bevestigingsmails hebben "
+"gehad (eentje van ons en eentje van onze betalingsafhandelaar). Als één van "
+"die twee uitblijft, laat het ons dan weten op mechanix@vtk.be, dan kunnen we "
+"kijken wat er fout ging."

@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'djangocms_snippet',
     'djangocms_style',
     'website.apps.WebsiteConfig',
+    'events.apps.EventsConfig',
     'imagekit',
 
     # `django-fobi` core
@@ -264,3 +265,15 @@ CMS_PLACEHOLDER_CONF = {
 FOBI_DEFAULT_THEME = 'foundation5'
 
 LOGIN_URL = '/admin/login'
+
+EMAIL_HOST = secret.EMAIL_HOST
+
+EMAIL_PORT = secret.EMAIL_PORT
+
+EMAIL_HOST_USER = secret.EMAIL_HOST_USER
+
+EMAIL_HOST_PASSWORD = secret.EMAIL_HOST_PASSWORD
+
+EMAIL_USE_SSL = secret.EMAIL_USE_SSL
+
+EMAIL_USE_TLS = secret.EMAIL_USE_TLS
