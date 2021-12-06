@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-05 23:41+0100\n"
+"POT-Creation-Date: 2021-12-06 22:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: events/fobi_form_elements.py:16
+msgid "Counter"
+msgstr ""
+
+#: events/fobi_form_elements.py:17 events/fobi_form_elements.py:52
+msgid "Fields"
+msgstr ""
+
+#: events/fobi_form_elements.py:51
+msgid "Random"
+msgstr ""
+
+#: events/forms2.py:18 events/forms2.py:54
+msgid "Label"
+msgstr ""
+
+#: events/forms2.py:25 events/forms2.py:61
+msgid "Name"
+msgstr ""
+
+#: events/forms2.py:30 events/forms2.py:66
+msgid "Don't change"
+msgstr "Niet veranderen"
+
+#: events/forms2.py:33 events/forms2.py:69
+msgid "Initial"
+msgstr ""
 
 #: templates/content/modals.html:48 templates/content/modals.html:95
 msgid "Close"
@@ -51,7 +79,7 @@ msgid "met-onderstaande-gegevens"
 msgstr "met onderstaande gegevens"
 
 #
-#: templates/mail/payment.html:13 templates/mail/registration.html:17
+#: templates/mail/payment.html:13 templates/mail/registration.html:18
 msgid "mailClosure"
 msgstr "Tot dan!"
 
@@ -65,4 +93,8 @@ msgstr ""
 "Als je betaling gelukt is, zou je daarover nog twee bevestigingsmails hebben "
 "gehad (eentje van ons en eentje van onze betalingsafhandelaar). Als één van "
 "die twee uitblijft, laat het ons dan weten op mechanix@vtk.be, dan kunnen we "
-"kijken wat er fout ging."
+"kijken wat er fout ging. Klik hieronder als je nog niet betaald hebt."
+
+#: templates/mail/registration.html:15
+msgid "pay"
+msgstr "Betalen"

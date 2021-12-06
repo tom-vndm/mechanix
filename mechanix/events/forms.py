@@ -14,3 +14,14 @@ class MechanixMaxSubmissionsForm(forms.Form, BasePluginForm):
         ("maxSubs", ""),
     ]
     maxSubs = forms.IntegerField(label="Maximum submissions", required=True)
+
+
+class MechanixPaymentForm(forms.Form, BasePluginForm):
+    """Max Submissions form."""
+
+    plugin_data_fields = [
+        ("orderPrefix", ""),
+        ("invoicePrefix", ""),
+    ]
+    orderPrefix = forms.IntegerField(label="Order Prefix (beheer)", required=True)
+    invoicePrefix = forms.IntegerField(label="Invoice Prefix (beheer)", required=True)

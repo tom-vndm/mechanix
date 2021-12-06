@@ -211,6 +211,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
 
+SITE_URL = 'http://127.0.0.1:8000'
+
 LANGUAGES = [
     ('nl', 'Dutch'),
     ('en', 'English'),
@@ -277,3 +279,20 @@ EMAIL_HOST_PASSWORD = secret.EMAIL_HOST_PASSWORD
 EMAIL_USE_SSL = secret.EMAIL_USE_SSL
 
 EMAIL_USE_TLS = secret.EMAIL_USE_TLS
+
+FORM_HANDLER_PLUGINS_EXECUTION_ORDER = (
+    'http_repost',
+    'mail',
+    "mechanix_max_submissions",
+    "mechanix_form_mail",
+    "mechanix_payment",
+
+    # The 'db_store' is left out intentionally, since it should
+    # be the last plugin to be executed.
+)
+
+EVENTS_SHA_PASS = secret.EVENTS_SHA_PASS
+
+EVENTS_SHA_OUT = secret.EVENTS_SHA_OUT
+
+EVENTS_PAY_URL = "https://secure.paypage.be/ncol/prod/orderstandard_utf8.asp?"

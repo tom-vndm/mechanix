@@ -13,6 +13,8 @@
 {% if paymentNeeded %}
 <p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;">{% trans 'paymentConfirmationNotice' %}</p>
 <p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"> </p>
+<a style="text-align: center;" href="{{ paymentURL }}"><button class="button-3" role="button">{% trans 'pay' %}</button></a>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"> </p>
 {% endif %}
 <p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;">{% trans 'mailClosure' %}</p>
 <p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;">Mechanix</p>
