@@ -10,7 +10,7 @@ django-autoslug==1.9.8
 django-classy-tags==2.0.0
 django-cms==3.9.0
 django-filer==2.1.1
-django-fobi==0.17.1
+-e git+https://github.com/tom-vndm/django-fobi@d3488acc1e01b592b3783b58bb07a9988e3fe7aa#egg=django_fobi
 django-formtools==2.3
 django-imagekit==4.1.0
 django-js-asset==1.2.2
@@ -37,7 +37,6 @@ lxml==4.6.4
 packaging==21.3
 pilkit==2.0
 Pillow==8.4.0
-pkg_resources==0.0.0
 pycodestyle==2.8.0
 pyparsing==3.0.6
 pytz==2021.3
