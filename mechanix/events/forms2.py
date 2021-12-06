@@ -6,7 +6,7 @@ theme = get_theme(request=None, as_instance=True)
 
 
 class CounterInputForm(forms.Form, BaseFormFieldPluginForm):
-    """Form for ``HiddenInputPlugin``."""
+    """Form for ``CounterInputPlugin``."""
 
     plugin_data_fields = [
         ("label", "Counter"),
@@ -39,3 +39,39 @@ class CounterInputForm(forms.Form, BaseFormFieldPluginForm):
 
     def clean(self):
         super(CounterInputForm, self).clean()
+
+
+class RandomInputForm(forms.Form, BaseFormFieldPluginForm):
+    """Form for ``RandomInputPlugin``."""
+
+    plugin_data_fields = [
+        ("label", "Random"),
+        ("name", "random"),
+        ("initial", "")
+    ]
+
+    label = forms.CharField(
+        label=_("Label"),
+        required=True,
+        widget=forms.widgets.TextInput(
+            attrs={'class': theme.form_element_html_class}
+        )
+    )
+    name = forms.CharField(
+        label=_("Name"),
+        required=True,
+        widget=forms.widgets.TextInput(
+            attrs={'class': theme.form_element_html_class}
+        ),
+        help_text=_("Don't change")
+    )
+    initial = forms.IntegerField(
+        label=_("Initial"),
+        required=True,
+        widget=forms.widgets.NumberInput(
+            attrs={'class': theme.form_element_html_class}
+        )
+    )
+
+    def clean(self):
+        super(RandomInputForm, self).clean()
