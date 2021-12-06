@@ -1,11 +1,26 @@
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
-from .models import MenuItem, Masthead, MastheadImage
-from .models import Content, ContentEntry, ContentHighlights, ContentHighlightsEntry
-from .models import ContentGrid, ContentFlow, ContentFlowEntryHTML
-from .models import ContentFlowEntryImage, ContentTeam, ContentTeamEntry
-from .models import ContentGallery, ContentGalleryEntry, Footer, FooterTextEntry
-from .models import FooterFontAwesomeEntry, FooterHTMLEntry
+from .models import (
+    MenuItem,
+    Masthead,
+    MastheadImage,
+    Content, 
+    ContentEntry, 
+    ContentHighlights, 
+    ContentHighlightsEntry, 
+    ContentGrid, 
+    ContentFlow, 
+    ContentFlowEntryHTML, 
+    ContentFlowEntryImage, 
+    ContentTeam, 
+    ContentTeamEntry, 
+    ContentGallery, 
+    ContentGalleryEntry, 
+    Footer, 
+    FooterTextEntry, 
+    FooterFontAwesomeEntry, 
+    FooterHTMLEntry,
+)
 from django.utils.translation import gettext_lazy as _
 
 
