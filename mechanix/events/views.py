@@ -390,6 +390,8 @@ class FormSubmissionDeleteView(View):
 
 class FormSubmissionsExportView(View):
     def get(self, request, form_id):
+        if not request.user.is_authenticated:
+            return redirect('%s' % (LOGIN_URL))
         response = HttpResponse(
             content_type='text/csv',
             headers={
