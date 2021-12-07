@@ -8,6 +8,8 @@ urlpatterns = [
           views.PaidView.as_view(), name='events.paid'),
      path('event/<int:event_id>',
           views.EventFormsView.as_view(), name='events.forms'),
+    path('event/submissions/<int:form_id>/export',
+         views.FormSubmissionsExportView.as_view(), name='events.forms.submissions.export'),
     path('event/submissions/<int:form_id>/<int:entry_id>/edit',
          views.FormSubmissionEditView.as_view(), name='events.forms.submission.edit'),
     path('event/submissions/<int:form_id>/<int:entry_id>/delete',

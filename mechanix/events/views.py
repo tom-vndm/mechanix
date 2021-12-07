@@ -21,6 +21,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.core import mail
 from .models import Event
+import csv
 
 
 class DefaultView(View):
@@ -251,6 +252,11 @@ class FormSubmissionsView(View):
                 'popup': False,
             },
             {
+                'link': reverse('events.forms.submissions.export', args=[form_id]),
+                'text': '<i class="fas fa-download"></i> Exporteren',
+                'popup': False,
+            },
+            {
                 'link': reverse('events.index'),
                 'text': '<i class="fas fa-calendar-alt"></i> Evenementen',
                 'popup': False,
@@ -260,7 +266,7 @@ class FormSubmissionsView(View):
                 'text': '<i class="fas fa-file-alt"></i> Forms Admin',
                 'popup': False,
             },
-        ]
+        ] 
 
         body = []
         form_entries = [json.loads(x['saved_data'])
@@ -380,6 +386,40 @@ class FormSubmissionDeleteView(View):
         id = [x['id'] for x in SavedFormDataEntry.objects.filter(form_entry_id=form_id).values() if json.loads(x['saved_data'])['counter'] == entry_id][0]
         SavedFormDataEntry.objects.get(id=id).delete()
         return redirect(reverse('events.forms.submissions', args=[form_id]))
+
+
+class FormSubmissionsExportView(View):
+    def get(self, request, form_id):
+        response = HttpResponse(
+            content_type='text/csv',
+            headers={
+                'Content-Disposition': 'attachment; filename="export.csv"'},
+        )
+
+        writer = csv.writer(response)
+
+        form = FormEntry.objects.filter(id=form_id).values()[0]
+        form_fields = [json.loads(x['plugin_data']) for x in FormEntry.objects.filter(
+            id=form_id)[0].formelemententry_set.all().values()]
+
+        headers = []
+        entries_to_check = []
+        for field in form_fields:
+            if ('label' in field) & ('name' in field):
+                headers.append(field['name'])
+                entries_to_check.append(field['name'])
+
+        writer.writerow(headers)
+
+        form_entries = [json.loads(x['saved_data'])
+                        for x in SavedFormDataEntry.objects.values() if x['form_entry_id'] == form_id]
+        for entry in form_entries:
+            entries = []
+            for check in entries_to_check:
+                entries.append(entry.get(check, 'None'))
+            writer.writerow(entries)
+
+        return response
         
 
 class PaymentView(View):
