@@ -10,6 +10,7 @@ from fobi.contrib.plugins.form_handlers.db_store.models import SavedFormDataEntr
 from django.shortcuts import redirect
 from django.urls import reverse
 from mechanix.settings import SITE_URL
+from django.utils.translation import gettext_lazy as _
 
 class MechanixFormMailHandlerPlugin(FormHandlerPlugin):
     """Mechanix Form Mail Handler"""
@@ -44,7 +45,7 @@ class MechanixFormMailHandlerPlugin(FormHandlerPlugin):
         paymentProcessed = len(form_entry.formhandlerentry_set.filter(
             plugin_uid=MechanixPaymentHandlerPlugin.uid)) > 0
 
-        subject = 'Inschrijving/Registration ' + data['eventnaam']
+        subject = _('registration') + ' ' + data['eventnaam']
         html_message = render_to_string('mail/registration.html', {
             'naam': data['voornaam'],
             'eventNaam': data['eventnaam'],
