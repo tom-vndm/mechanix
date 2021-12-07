@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-06 22:19+0100\n"
+"POT-Creation-Date: 2021-12-07 12:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,21 +30,69 @@ msgstr ""
 msgid "Random"
 msgstr ""
 
-#: events/forms2.py:18 events/forms2.py:54
+#: events/fobi_form_handlers.py:48
+msgid "registration"
+msgstr "Registration"
+
+#: events/forms_elements.py:18 events/forms_elements.py:54
 msgid "Label"
 msgstr ""
 
-#: events/forms2.py:25 events/forms2.py:61
+#: events/forms_elements.py:25 events/forms_elements.py:61
 msgid "Name"
 msgstr ""
 
-#: events/forms2.py:30 events/forms2.py:66
+#: events/forms_elements.py:30 events/forms_elements.py:66
 msgid "Don't change"
 msgstr "Don't change"
 
-#: events/forms2.py:33 events/forms2.py:69
+#: events/forms_elements.py:33 events/forms_elements.py:69
 msgid "Initial"
 msgstr ""
+
+#: events/views.py:35
+msgid "random_key_incorrect"
+msgstr "An incorrect secret key was provided"
+
+#: events/views.py:84
+msgid "incomplete_request"
+msgstr "One or more parameters were missing from the request"
+
+#: events/views.py:90
+msgid "sha_out_incorrect"
+msgstr "The incoming hash was incorrect"
+
+#: events/views.py:102
+msgid "order_incorrect"
+msgstr "The order number of the payment did not correspond to the one in our records"
+
+#: events/views.py:159
+msgid "CN"
+msgstr "Client name"
+
+#: events/views.py:160
+msgid "optie"
+msgstr "Option"
+
+#: events/views.py:161
+msgid "valuta"
+msgstr "Currency"
+
+#: events/views.py:162
+msgid "amount"
+msgstr "Amount"
+
+#: events/views.py:163
+msgid "ORDERID"
+msgstr "Internal reference (ORDERID)"
+
+#: events/views.py:164
+msgid "ticket_nummer"
+msgstr "Ticket number"
+
+#: events/views.py:168
+msgid "payment-received"
+msgstr "Payment Received"
 
 #: templates/content/modals.html:48 templates/content/modals.html:95
 msgid "Close"
@@ -57,6 +105,14 @@ msgstr "Photos"
 #: templates/forms/form_entry_inactive_ajax.html:12
 msgid "This form is not active."
 msgstr ""
+
+#: templates/forms/form_entry_submitted_ajax.html:4
+msgid "Thank you!"
+msgstr "Thank you!"
+
+#: templates/forms/form_entry_submitted_ajax.html:15
+msgid "Form submitted successfully."
+msgstr "Form submitted succesfully"
 
 #: templates/language.html:6
 msgid "ChangeLang"
@@ -79,7 +135,7 @@ msgid "met-onderstaande-gegevens"
 msgstr "with the entries below"
 
 #
-#: templates/mail/payment.html:13 templates/mail/registration.html:18
+#: templates/mail/payment.html:13 templates/mail/registration.html:19
 msgid "mailClosure"
 msgstr "See you then!"
 
@@ -93,8 +149,9 @@ msgstr ""
 "If your payment has been processed succesfully, you should also be receiving "
 "a confirmation mail from both ourselves and our payment provider as well. If "
 "any of those fail to arrive, don't hesitate to contact us on mechanix@vtk.be "
-"to check what has gone wrong. Click the button below if you have not paid yet."
+"to check what has gone wrong. Click the button below if you have not paid "
+"yet."
 
-#: templates/mail/registration.html:15
+#: templates/mail/registration.html:16
 msgid "pay"
 msgstr "Pay"
