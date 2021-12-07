@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-07 12:10+0100\n"
+"POT-Creation-Date: 2021-12-07 23:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: events/fobi_form_elements.py:16
+#: events/fobi_form_elements.py:18
 msgid "Counter"
 msgstr ""
 
-#: events/fobi_form_elements.py:17 events/fobi_form_elements.py:52
+#: events/fobi_form_elements.py:19 events/fobi_form_elements.py:58
 msgid "Fields"
 msgstr ""
 
-#: events/fobi_form_elements.py:51
+#: events/fobi_form_elements.py:57
 msgid "Random"
 msgstr ""
 
@@ -50,55 +50,60 @@ msgstr "Don't change"
 msgid "Initial"
 msgstr ""
 
-#: events/views.py:35
+#: events/views.py:391
 msgid "random_key_incorrect"
 msgstr "An incorrect secret key was provided"
 
-#: events/views.py:84
+#: events/views.py:441
 msgid "incomplete_request"
 msgstr "One or more parameters were missing from the request"
 
-#: events/views.py:90
+#: events/views.py:447
 msgid "sha_out_incorrect"
 msgstr "The incoming hash was incorrect"
 
-#: events/views.py:102
+#: events/views.py:459
 msgid "order_incorrect"
-msgstr "The order number of the payment did not correspond to the one in our records"
+msgstr ""
+"The order number of the payment did not correspond to the one in our records"
 
-#: events/views.py:159
+#: events/views.py:516
 msgid "CN"
 msgstr "Client name"
 
-#: events/views.py:160
+#: events/views.py:517
 msgid "optie"
 msgstr "Option"
 
-#: events/views.py:161
+#: events/views.py:518
 msgid "valuta"
 msgstr "Currency"
 
-#: events/views.py:162
+#: events/views.py:519
 msgid "amount"
 msgstr "Amount"
 
-#: events/views.py:163
+#: events/views.py:520
 msgid "ORDERID"
 msgstr "Internal reference (ORDERID)"
 
-#: events/views.py:164
+#: events/views.py:521
 msgid "ticket_nummer"
 msgstr "Ticket number"
 
-#: events/views.py:168
+#: events/views.py:522
+msgid "payid"
+msgstr "Payment reference (PAYID)"
+
+#: events/views.py:525
 msgid "payment-received"
 msgstr "Payment Received"
 
-#: templates/content/modals.html:48 templates/content/modals.html:95
+#: templates/content/modals.html:53 templates/content/modals.html:100
 msgid "Close"
 msgstr "Close"
 
-#: templates/content/modals.html:51
+#: templates/content/modals.html:56
 msgid "Photos"
 msgstr "Photos"
 

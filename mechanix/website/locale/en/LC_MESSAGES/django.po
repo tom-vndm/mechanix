@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-07 12:10+0100\n"
+"POT-Creation-Date: 2021-12-07 23:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,82 +18,82 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: website/cms_plugins.py:30
+#: website/cms_plugins.py:32
 msgid "Menu item"
 msgstr ""
 
-#: website/cms_plugins.py:42
+#: website/cms_plugins.py:44
 msgid "Masthead"
 msgstr ""
 
-#: website/cms_plugins.py:56
+#: website/cms_plugins.py:58
 msgid "Masthead Image"
 msgstr ""
 
-#: website/cms_plugins.py:69
+#: website/cms_plugins.py:71
 msgid "Content wrapper"
 msgstr ""
 
-#: website/cms_plugins.py:83
+#: website/cms_plugins.py:85
 msgid "Content entry"
 msgstr ""
 
-#: website/cms_plugins.py:100
+#: website/cms_plugins.py:102
 msgid "Highlights"
 msgstr ""
 
-#: website/cms_plugins.py:115
+#: website/cms_plugins.py:117
 msgid "Highlights entry"
 msgstr ""
 
-#: website/cms_plugins.py:128
+#: website/cms_plugins.py:130 website/cms_plugins.py:145
 msgid "Grid"
 msgstr ""
 
-#: website/cms_plugins.py:142
+#: website/cms_plugins.py:158
 msgid "Modals"
 msgstr ""
 
-#: website/cms_plugins.py:156
+#: website/cms_plugins.py:172
 msgid "Flow"
 msgstr ""
 
-#: website/cms_plugins.py:172
+#: website/cms_plugins.py:188
 msgid "Flow entry (image)"
 msgstr ""
 
-#: website/cms_plugins.py:185
+#: website/cms_plugins.py:201
 msgid "Flow entry (html)"
 msgstr ""
 
-#: website/cms_plugins.py:198
+#: website/cms_plugins.py:214
 msgid "Team"
 msgstr ""
 
-#: website/cms_plugins.py:213
+#: website/cms_plugins.py:229
 msgid "Team entry"
 msgstr ""
 
-#: website/cms_plugins.py:226
+#: website/cms_plugins.py:242
 msgid "Gallery"
 msgstr ""
 
-#: website/cms_plugins.py:241
+#: website/cms_plugins.py:257
 msgid "Gallery entry"
 msgstr ""
 
-#: website/cms_plugins.py:254
+#: website/cms_plugins.py:270
 msgid "Footer"
 msgstr ""
 
-#: website/cms_plugins.py:269
+#: website/cms_plugins.py:285
 msgid "Footer text entry"
 msgstr ""
 
-#: website/cms_plugins.py:282
+#: website/cms_plugins.py:298
 msgid "Footer FontAwesome entry"
 msgstr ""
 
-#: website/cms_plugins.py:295
+#: website/cms_plugins.py:311
 msgid "Footer html entry"
 msgstr ""
