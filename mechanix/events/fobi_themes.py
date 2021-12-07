@@ -7,7 +7,7 @@ __all__ = ('MechanixTheme',)
 
 class MechanixTheme(Foundation5Theme):
     html_classes = ['bg-light', ]
-    base_template = 'forms/base.html'
+    base_template = 'backend/base.html'
     form_ajax = 'forms/form_ajax.html'
     base_edit_template = 'forms/base_old.html'
     messages_snippet_template_name = 'forms/messages_snippet.html'

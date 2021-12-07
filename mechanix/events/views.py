@@ -23,7 +23,7 @@ from django.core import mail
 
 class DefaultView(View):
     def get(self, request):
-        return render(request, 'empty.html', {'teststring': 'jaja', 'page_title': 'Titel'})
+        return render(request, 'forms/base.html', {'teststring': 'jaja', 'page_title': 'Titel'})
 
 
 class PaymentView(View):
