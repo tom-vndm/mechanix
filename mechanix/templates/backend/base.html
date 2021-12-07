@@ -14,6 +14,7 @@
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
         <link href="{% static 'styles.css' %}" rel="stylesheet" />
 {% endblock stylesheets %}
 
@@ -53,24 +54,6 @@
           {% endblock content %}
       
       {% endblock content-wrapper %}
-
-      {% block sidebar-wrapper %}
-      <div class="large-4 columns hide-for-small">
-        {% block sidebar %}
-        {% block sidebar-content %}
-        <h4>Get In Touch!</h4>
-        <hr>
-        <a href="#">
-        <div class="panel radius callout" style="text-align: center">
-          <strong>Call To Action!</strong>
-        </div></a> <a href="#">
-        <div class="panel radius callout" style="text-align: center">
-          <strong>Call To Action!</strong>
-        </div></a>
-        {% endblock sidebar-content %}
-        {% endblock sidebar %}
-      </div><!-- End Content -->
-      {% endblock sidebar-wrapper %}
     </div>
     
 </div>
@@ -79,8 +62,9 @@
 {% endblock main-content-wrapper %}
 
 {% block javascripts %}
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
         <script src="{% static 'scripts.js' %}"></script>
 {% endblock javascripts %}

@@ -1,0 +1,28 @@
+{% extends "backend/backend.html" %}
+
+{% block table_head %}
+{% for table_header in headers %}
+<th data-field="{{ table_header.field_name }}" data-valign="middle">{{ table_header.label }}</th>
+{% endfor %}
+{% endblock table_head %}
+
+{% block table_body %}
+{% for row in table_body %}
+<tr>
+    {% for entry in row.entries %}
+    <td>{{ entry }}</td>
+    {% endfor %}
+    <td>
+    {% for button in row.buttons %}
+    
+        {% if button.popup %}
+            <a class="btn btn-primary m-1 btn-sm" href="{{ button.link }}" onclick="window.open('{{ button.link }}','popup','width=600,height=600'); return false;" role="button">{{ button.text|safe }}</a>
+        {% else %}
+            <a class="btn btn-primary m-1 btn-sm" href="{{ button.link }}" role="button">{{ button.text|safe }}</a>
+        {% endif %}
+    
+    {% endfor %}
+    </td>
+</tr>
+{% endfor %}
+{% endblock table_body %}

@@ -1,0 +1,20 @@
+{% extends "backend/backend.html" %}
+
+{% block content_body %}
+    <form action="" method="POST">{% csrf_token %}
+        {% for entry in form %}
+        {% if entry.disabled %}
+        <div class="mb-3">
+            <label for="{{ entry.name }}" class="form-label">{{ entry.label }}</label>
+            <input type="{{ entry.type }}" class="form-control" id="{{ entry.name }}" name="{{ entry.name }}" value="{{ entry.content }}" readonly>
+        </div>
+        {% else %}
+        <div class="mb-3">
+            <label for="{{ entry.name }}" class="form-label">{{ entry.label }}</label>
+            <input type="{{ entry.type }}" class="form-control" id="{{ entry.name }}" name="{{ entry.name }}" value="{{ entry.content }}">
+        </div>
+        {% endif %}
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Aanpassen</button>
+    </form>
+{% endblock content_body %}
