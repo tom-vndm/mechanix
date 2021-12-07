@@ -1,6 +1,7 @@
 from django.db import models
 from cms.models.pluginmodel import CMSPlugin
 from djangocms_text_ckeditor.fields import HTMLField
+from events.models import Event
 
 # Create your models here.
 
@@ -72,6 +73,13 @@ class ContentGrid(CMSPlugin):
 
     def __str__(self):
         return "Grid"
+
+
+class EventGridItem(CMSPlugin):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.event.title
 
 
 class ContentFlow(CMSPlugin):

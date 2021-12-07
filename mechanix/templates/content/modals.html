@@ -38,11 +38,16 @@
                                     Illustration
                                 </li>
                             </ul> {% endcomment %}                            
-                            {% if entry.buttonText %}
-                            <a class="btn btn-success btn-xl text-uppercase m-2 p-3" href="{{ entry.buttonUrl }}" role="button">
-                                {{ entry.buttonText }}
+                            {% if entry.externalButtonText %}
+                            <a class="btn btn-success btn-xl text-uppercase m-2 p-3" href="{{ entry.externalButtonUrl }}" role="button">
+                                {{ entry.externalButtonText }}
                             </a>
                             {% endif %}
+                            {% for form in entry.forms.all %}
+                            <a class="btn btn-success btn-xl text-uppercase m-2 p-3" href="{% url 'fobi.view_form_entry' form.slug %}" role="button">
+                                {{ form.name }}
+                            </a>
+                            {% endfor %}
                             <button class="btn btn-primary btn-xl text-uppercase m-2 p-3" data-bs-dismiss="modal" type="button">
                                 {% trans 'Close' %}
                             </button>

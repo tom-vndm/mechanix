@@ -20,8 +20,10 @@ from .models import (
     FooterTextEntry, 
     FooterFontAwesomeEntry, 
     FooterHTMLEntry,
+    EventGridItem,
 )
 from django.utils.translation import gettext_lazy as _
+from events.models import Event
 
 
 @plugin_pool.register_plugin
@@ -129,8 +131,22 @@ class ContentGridPlugin(CMSPluginBase):
     render_template = "content/grid/grid.html"
     cache = False
     allow_children = True
-    child_classes = []
+    child_classes = ['EventGridItemPlugin']
     parent_classes = ['ContentEntryPlugin']
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context
+
+
+@plugin_pool.register_plugin
+class EventGridItemPlugin(CMSPluginBase):
+    model = EventGridItem
+    name = _("Grid")
+    render_template = "content/grid/gridentry.html"
+    cache = False
+    allow_children = False
+    parent_classes = ['ContentGridPlugin']
 
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
@@ -144,7 +160,7 @@ class ContentModalPlugin(CMSPluginBase):
     cache = False
 
     def render(self, context, instance, placeholder):
-        # context['grid_modals'] = Event.objects.all()
+        context['grid_modals'] = Event.objects.all()
         context['team_modals'] = ContentTeamEntry.objects.all()
         context = super().render(context, instance, placeholder)
         return context
