@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'events.apps.EventsConfig',
     'imagekit',
+    'modeltranslation',
 
     # `django-fobi` core
     'fobi',

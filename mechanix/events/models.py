@@ -23,7 +23,7 @@ class Event(models.Model):
     doors = models.TimeField(null=True, blank=True)
     imageFolder = FilerFolderField(
         null=True, blank=True, on_delete=models.SET_NULL)
-    forms = models.ManyToManyField(FormEntry)
+    forms = models.ManyToManyField(FormEntry, blank=True)
     externalButtonText = models.CharField(
         max_length=128, null=True, blank=True)
     externalButtonUrl = models.CharField(max_length=512, null=True, blank=True)
