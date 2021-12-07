@@ -27,6 +27,7 @@ class Event(models.Model):
     externalButtonText = models.CharField(
         max_length=128, null=True, blank=True)
     externalButtonUrl = models.CharField(max_length=512, null=True, blank=True)
+    currentTicketNumber = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
