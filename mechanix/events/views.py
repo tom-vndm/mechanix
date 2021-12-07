@@ -3,11 +3,17 @@ from django.urls import reverse
 from django.views import View
 from urllib.parse import urlencode
 from django.utils.translation import get_language
-import json, hashlib
+import json
+import hashlib
 from fobi.contrib.plugins.form_handlers.db_store.models import SavedFormDataEntry
 from fobi.models import FormEntry
 from .fobi_form_handlers import MechanixPaymentHandlerPlugin
-from mechanix.settings import SITE_URL, EVENTS_SHA_PASS, EVENTS_PAY_URL
+from mechanix.settings import (
+    SITE_URL, 
+    EVENTS_SHA_PASS, 
+    EVENTS_PAY_URL,
+    EVENTS_SHA_OUT,
+)
 from django.core.exceptions import SuspiciousOperation
 from django.utils.translation import gettext_lazy as _
 
@@ -15,6 +21,7 @@ from django.utils.translation import gettext_lazy as _
 class DefaultView(View):
     def get(self, request):
         return render(request, 'empty.html', {'teststring': 'jaja', 'page_title': 'Titel'})
+
 
 class PaymentView(View):
     def get(self, request, form_entry, payment, key):
@@ -27,8 +34,7 @@ class PaymentView(View):
         invoice_nb_int = form_data['counter']
         invoice_nb = str(invoice_nb_int).zfill(4)
 
-        payment_data = json.loads(FormEntry.objects.filter(id=form_entry)[0] \
-        .formhandlerentry_set.filter(plugin_uid=MechanixPaymentHandlerPlugin.uid)[0].plugin_data)
+        payment_data = get_payment_data(form_entry)
 
         session_lang = get_language()
         lang_mapper = {
@@ -51,37 +57,99 @@ class PaymentView(View):
             'TP': 'ingenicoResponsivePaymentPageTemplate_index.html',
         }
 
-        
-        hash_string, hash512 = get_hash(dict(sorted(params.items())))
+        hash512 = get_hash(dict(sorted(params.items())), EVENTS_SHA_PASS)
+        params['SHASIGN'] = str(hash512)
 
         breakpoint()
-        params['SHASIGN'] = str(hash512)
-        return redirect(EVENTS_PAY_URL + urlencode(dict(sorted(params.items()))))
+        url = EVENTS_PAY_URL + urlencode(dict(sorted(params.items())))
+        return redirect(url)
 
 
 class PaidView(View):
     def get(self, request, form_entry, payment):
-        return HttpResponse(str(form_entry) + ' ' + str(payment))
+        data_raw = dict(request.GET)
+
+        data = {}
+        for k, v in data_raw.items():
+            data[k] = v[0]
+
+        if not all (k in data.keys() for k in (
+            'SHASIGN',
+            'COM',
+            'ORDERID',
+        )):
+            raise SuspiciousOperation(_("incomplete_request"))
+
+        sha_out = str(data.pop('SHASIGN'))
+        sha_out_true = get_hash(data, EVENTS_SHA_OUT)
+
+        if sha_out.capitalize() != sha_out_true.capitalize():
+            raise SuspiciousOperation(_("sha_out_incorrect"))
+
+        form_data = get_form_data(form_entry, payment)
+        payment_data = get_payment_data(form_entry)
+
+        invoice_nb_int = form_data['counter']
+        invoice_nb = str(invoice_nb_int).zfill(4)
+
+        com = str(payment_data['invoicePrefix']) + invoice_nb
+        orderid = str(payment_data['orderPrefix']) + invoice_nb
+
+        if (com, orderid) != (data['COM'], data['ORDERID']):
+            raise SuspiciousOperation(_("order_incorrect"))
+
+        set_paid(form_entry, payment, data)
+        send_confirmation(form_entry, payment, data)
+
+        form_entry_slug = FormEntry.objects.filter(id=form_entry).values()[0]['slug']
+
+        confirmation_page = reverse(
+            'fobi.form_entry_submitted', args=[form_entry_slug])
+        return redirect(confirmation_page)
 
 
 def get_form_data(form_entry, payment):
     form_entries = [json.loads(x['saved_data'])
-                    for x in SavedFormDataEntry.objects.values() if x['form_entry_id']==form_entry]
+                    for x in SavedFormDataEntry.objects.values() if x['form_entry_id'] == form_entry]
     form_data = [x for x in form_entries if x.get('counter') == payment][0]
 
-    form_fields = [json.loads(x['plugin_data']) for x in FormEntry.objects.filter(id=form_entry)[0].formelemententry_set.all().values()]
-    choices = [x.split(', ') for x in [t['choices'] for t in form_fields if t.get('name') == 'prijs'][0].split('\r\n')]
-    price = [int(x) for [x,y] in choices if y==form_data['prijs']][0]
+    form_fields = [json.loads(x['plugin_data']) for x in FormEntry.objects.filter(
+        id=form_entry)[0].formelemententry_set.all().values()]
+    choices = [x.split(', ') for x in [t['choices']
+                                       for t in form_fields if t.get('name') == 'prijs'][0].split('\r\n')]
+    price = [int(x) for [x, y] in choices if y == form_data['prijs']][0]
 
-    form_data['price_paypage']=price
+    form_data['price_paypage'] = price
 
     return form_data
 
-def get_hash(params):
+
+def get_hash(params, sha_in):
     hash_string = ""
-    sha_in = EVENTS_SHA_PASS
-    for k,v in params.items():
+    for k, v in params.items():
         hash_string += str(k) + '=' + str(v) + sha_in
 
     hash512 = hashlib.sha512(hash_string.encode())
-    return hash_string, hash512.hexdigest()
+    return hash512.hexdigest()
+
+
+def get_payment_data(form_entry):
+    return json.loads(FormEntry.objects.filter(id=form_entry)[0]
+                      .formhandlerentry_set.filter(plugin_uid=MechanixPaymentHandlerPlugin.uid)[0].plugin_data)
+
+
+def set_paid(form_entry, payment, data):
+    form_values = SavedFormDataEntry.objects.filter(form_entry_id=form_entry)
+    form_submission = [x['saved_data']
+                       for x in form_values.values() if json.loads(x['saved_data']).get('counter') == payment][0]
+    form_submission_dict = json.loads(form_submission)
+
+    form_submission_dict['betaald'] = 'Ja'
+    form_submission_paid = json.dumps(form_submission_dict)
+
+    form_submission_select = SavedFormDataEntry.objects.filter(saved_data=form_submission)
+    form_submission_select.update(saved_data=form_submission_paid)
+
+
+def send_confirmation(form_entry, payment, data):
+    pass

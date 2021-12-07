@@ -12,6 +12,7 @@ class MechanixTheme(Foundation5Theme):
     base_edit_template = 'forms/base_old.html'
     messages_snippet_template_name = 'forms/messages_snippet.html'
     form_entry_inactive_ajax_template = 'forms/form_entry_inactive_ajax.html'
+    form_entry_submitted_ajax_template = 'forms/form_entry_submitted_ajax.html'
 
 
 # It's important to set the `force` argument to True, in
