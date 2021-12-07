@@ -2,7 +2,7 @@ from django.forms.fields import IntegerField
 from django.forms.widgets import HiddenInput
 from django.utils.translation import gettext_lazy as _
 from fobi.base import FormFieldPlugin, get_theme, form_element_plugin_registry
-from .forms2 import CounterInputForm, RandomInputForm
+from .forms_elements import CounterInputForm, RandomInputForm
 from fobi.contrib.plugins.form_handlers.db_store.models import SavedFormDataEntry
 from secrets import randbelow
 

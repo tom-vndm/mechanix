@@ -1,7 +1,7 @@
 import json
 from django.core import mail
 from fobi.base import FormHandlerPlugin, form_handler_plugin_registry
-from .forms import MechanixMailForm, MechanixMaxSubmissionsForm, MechanixPaymentForm
+from .forms_handlers import MechanixMailForm, MechanixMaxSubmissionsForm, MechanixPaymentForm
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from fobi.models import FormEntry
