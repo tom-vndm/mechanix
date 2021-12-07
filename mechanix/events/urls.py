@@ -5,4 +5,5 @@ urlpatterns = [
     path('payment/<int:form_entry>/<int:payment>/<int:key>/',
          views.PaymentView.as_view(), name='events.payment'),
     path('', views.DefaultView.as_view(), name='events.index'),
+    path('paid/<int:form_entry>/<int:payment>/', views.PaidView.as_view(), name='events.paid')
     ]

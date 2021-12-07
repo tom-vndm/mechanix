@@ -8,8 +8,6 @@ from fobi.models import FormEntry
 from datetime import datetime
 from fobi.contrib.plugins.form_handlers.db_store.models import SavedFormDataEntry
 from django.shortcuts import redirect
-from urllib.parse import urlencode
-from django.utils.translation import get_language
 from django.urls import reverse
 from mechanix.settings import SITE_URL
 
