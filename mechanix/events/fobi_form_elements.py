@@ -5,6 +5,8 @@ from fobi.base import FormFieldPlugin, get_theme, form_element_plugin_registry
 from .forms_elements import CounterInputForm, RandomInputForm
 from fobi.contrib.plugins.form_handlers.db_store.models import SavedFormDataEntry
 from secrets import randbelow
+from fobi.models import FormEntry
+from django.db import transaction
 
 theme = get_theme(request=None, as_instance=True)
 
@@ -36,10 +38,14 @@ class CounterInputPlugin(FormFieldPlugin):
         """Submit plugin form data."""
 
         formId = form_entry.id
-        submissions = SavedFormDataEntry.objects.filter(form_entry_id=formId)
-        nbSubmissions = len(submissions)
 
-        form.cleaned_data[self.data.name] = self.data.initial + nbSubmissions + 1
+        with transaction.atomic():
+            event = FormEntry.objects.get(id=formId).event_set.all().select_for_update().get()
+            nbSubmissions = event.currentTicketNumber
+            event.currentTicketNumber += 1
+            event.save()           
+
+        form.cleaned_data[self.data.name] = nbSubmissions + 1
         
         return form
 
