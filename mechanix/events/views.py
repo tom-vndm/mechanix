@@ -476,8 +476,7 @@ class PaidView(View):
 
         if not all (k in data.keys() for k in (
             'SHASIGN',
-            'COM',
-            'ORDERID',
+            'orderID',
             'PAYID',
         )):
             raise SuspiciousOperation(_("incomplete_request"))
@@ -497,7 +496,7 @@ class PaidView(View):
         com = str(payment_data['invoicePrefix']) + invoice_nb
         orderid = str(payment_data['orderPrefix']) + invoice_nb
 
-        if (com, orderid) != (data['COM'], data['ORDERID']):
+        if orderid != data['orderID']:
             raise SuspiciousOperation(_("order_incorrect"))
 
         set_paid(form_entry, payment)
@@ -528,8 +527,8 @@ def get_form_data(form_entry, payment):
 
 def get_hash(params, sha_in):
     hash_string = ""
-    for k, v in params.items():
-        hash_string += str(k) + '=' + str(v) + sha_in
+    for k, v in sorted(params.items(), key=lambda kv: kv[1]):
+        hash_string += str(k).upper() + '=' + str(v).upper() + sha_in
 
     hash512 = hashlib.sha512(hash_string.encode())
     return hash512.hexdigest()
