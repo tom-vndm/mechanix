@@ -558,7 +558,7 @@ def send_confirmation(data, form_data):
         _('optie'): form_data.get('prijs'),
         _('ORDERID'): data.get('orderID'),
         _('ticket_nummer'): form_data.get('counter'),
-        _('payid'): form_data.get('PAYID'),
+        _('payid'): data.get('PAYID'),
     }
     
     subject = _('payment-received') + ' ' + form_data.get('eventnaam')
