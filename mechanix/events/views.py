@@ -554,24 +554,22 @@ def set_paid(form_entry, payment):
 
 def send_confirmation(data, form_data):
     mailElements = {
-        _('CN'): data.get('CN'),
+        _('CN'): form_data.get('voornaam') + ' ' + form_data.get('achternaam'),
         _('optie'): form_data.get('prijs'),
-        _('valuta'): data.get('CURRENCY'),
-        _('amount'): data.get('AMOUNT'),
-        _('ORDERID'): data.get('ORDERID'),
-        _('ticket_nummer'): form_data['counter'],
-        _('payid'): form_data['PAYID'],
+        _('ORDERID'): data.get('orderID'),
+        _('ticket_nummer'): form_data.get('counter'),
+        _('payid'): form_data.get('PAYID'),
     }
     
-    subject = _('payment-received') + ' ' + form_data['eventnaam']
+    subject = _('payment-received') + ' ' + form_data.get('eventnaam')
     html_message = render_to_string('mail/payment.html', {
-        'naam': form_data['voornaam'],
-        'eventNaam': form_data['eventnaam'],
+        'naam': form_data.get('voornaam'),
+        'eventNaam': form_data.get('eventnaam'),
         'formData': mailElements,
     })
     plain_message = strip_tags(html_message)
     from_email = 'Mechanix <mechanix@vtk.be>'
-    to = form_data['email']
+    to = form_data.get('email')
 
     mail.send_mail(subject, plain_message, from_email,
                    [to], html_message=html_message)
