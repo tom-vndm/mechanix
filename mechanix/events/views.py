@@ -527,7 +527,7 @@ def get_form_data(form_entry, payment):
 
 def get_hash(params, sha_in):
     hash_string = ""
-    for k, v in sorted(params.items(), key=lambda kv: str(kv[0])):
+    for k, v in sorted(params.items(), key=lambda kv: str(kv[0]).upper()):
         hash_string += str(k).upper() + '=' + str(v).upper() + sha_in
 
     hash512 = hashlib.sha512(hash_string.encode())
